@@ -39,6 +39,15 @@ def show_tasks(tasks):
         print(f'{t["id"]}. [{status}] {t["title"]}')
 
 
+def ask_id():
+    """Ask the user for a task id and return it as an int (or None)."""
+    value = input("Task ID: ").strip()
+    if not value.isdigit():
+        print("Please enter a valid number.")
+        return None
+    return int(value)
+
+
 def main():
     tasks = []
     while True:
@@ -52,7 +61,15 @@ def main():
                 print(f"Error: {error}")
         elif choice == "2":
             show_tasks(tasks)
-        elif choice in ("3", "4"):
+        elif choice == "3":
+            task_id = ask_id()
+            if task_id is not None:
+                try:
+                    complete_task(tasks, task_id)
+                    print("Task marked as completed.")
+                except ValueError as error:
+                    print(f"Error: {error}")
+        elif choice == "4":
             print("Coming soon.")
         elif choice == "5":
             print("Goodbye!")
