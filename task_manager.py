@@ -29,6 +29,15 @@ def complete_task(tasks, task_id):
     return task
 
 
+def delete_task(tasks, task_id):
+    """Delete a task using its id."""
+    task = find_task(tasks, task_id)
+    if task is None:
+        raise ValueError(f"No task with id {task_id}.")
+    tasks.remove(task)
+    return task
+
+
 def show_tasks(tasks):
     """Print all tasks."""
     if not tasks:
