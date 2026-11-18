@@ -12,6 +12,23 @@ def add_task(tasks, title):
     return task
 
 
+def find_task(tasks, task_id):
+    """Return the task with the given id, or None."""
+    for task in tasks:
+        if task["id"] == task_id:
+            return task
+    return None
+
+
+def complete_task(tasks, task_id):
+    """Mark a task as completed."""
+    task = find_task(tasks, task_id)
+    if task is None:
+        raise ValueError(f"No task with id {task_id}.")
+    task["done"] = True
+    return task
+
+
 def show_tasks(tasks):
     """Print all tasks."""
     if not tasks:
