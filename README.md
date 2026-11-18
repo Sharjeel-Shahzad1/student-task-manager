@@ -2,4 +2,4 @@
 
 A simple Python console app to manage student tasks.
 
-Project status: Planning
+Project status: In Progress
