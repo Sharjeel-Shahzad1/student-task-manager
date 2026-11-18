@@ -28,9 +28,11 @@ def main():
         print("\n1. Add task\n2. Show tasks\n3. Complete task\n4. Delete task\n5. Exit")
         choice = input("Choose: ").strip()
         if choice == "1":
-            title = input("Task title: ")
-            task = add_task(tasks, title)
-            print(f"Task {task['id']} added.")
+            try:
+                task = add_task(tasks, input("Task title: "))
+                print(f"Task {task['id']} added.")
+            except ValueError as error:
+                print(f"Error: {error}")
         elif choice == "2":
             show_tasks(tasks)
         elif choice in ("3", "4"):
