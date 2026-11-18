@@ -62,29 +62,29 @@ def main():
     while True:
         print("\n1. Add task\n2. Show tasks\n3. Complete task\n4. Delete task\n5. Exit")
         choice = input("Choose: ").strip()
-        if choice == "1":
-            try:
+        try:
+            if choice == "1":
                 task = add_task(tasks, input("Task title: "))
                 print(f"Task {task['id']} added.")
-            except ValueError as error:
-                print(f"Error: {error}")
-        elif choice == "2":
-            show_tasks(tasks)
-        elif choice == "3":
-            task_id = ask_id()
-            if task_id is not None:
-                try:
+            elif choice == "2":
+                show_tasks(tasks)
+            elif choice == "3":
+                task_id = ask_id()
+                if task_id is not None:
                     complete_task(tasks, task_id)
                     print("Task marked as completed.")
-                except ValueError as error:
-                    print(f"Error: {error}")
-        elif choice == "4":
-            print("Coming soon.")
-        elif choice == "5":
-            print("Goodbye!")
-            break
-        else:
-            print("Invalid choice.")
+            elif choice == "4":
+                task_id = ask_id()
+                if task_id is not None:
+                    delete_task(tasks, task_id)
+                    print("Task deleted.")
+            elif choice == "5":
+                print("Goodbye!")
+                break
+            else:
+                print("Invalid choice.")
+        except ValueError as error:
+            print(f"Error: {error}")
 
 
 if __name__ == "__main__":
